@@ -7,6 +7,8 @@ const compress = require('compression')
 const serveStatic = require('serve-static');
 const path = require('path');
 const emails = require('./fixtures/emails');
+const findUser = require('./lib/find-user'); 
+const basicAuth = require('./lib/basic-auth');
 
 let app = express();
 
@@ -46,6 +48,7 @@ app.use('/uploads', serveStatic(path.join(__dirname, 'uploads'), {
   setHeaders,
 }));
 
+app.use(basicAuth(findUser.byCredentials));
 app.use('/users', usersRouter);
 app.use('/emails', emailsRouter);
 

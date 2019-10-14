@@ -1,5 +1,5 @@
 [
-  { "id": "1", "username": "nybblr", "name": "Jonathan", "password": "alps" },
-  { "id": "2", "username": "flurry", "name": "Shawnee", "password": "redwood" },
-  { "id": "3", "username": "bucky", "name": "Alex", "password": "sierra" }
+  { "id": "1", "username": "nybblr", "name": "Jonathan", "password": "$2b$10$sm6OVWBXdQhhULJ51ywOCuhALOeqcFSQWbzJ1iKFUu2kWFq8hu3iq" },
+  { "id": "2", "username": "flurry", "name": "Shawnee", "password": "$2b$10$RaVTPMeSH/lfio4YkWRmB.gHRPUbT7.FvExYd/E6nk7uu/Iu7sGdm" },
+  { "id": "3", "username": "bucky", "name": "Alex", "password": "$2b$10$VnQQCWHeF00xT4nFthJzT.LLRdPdLBHsyfs58QJ7utn0RgcNUBFnG" }
 ]

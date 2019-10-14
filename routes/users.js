@@ -1,6 +1,7 @@
 const express = require('express');
 const users = require('../fixtures/users');
 const { respondWithCsv, respondWithJson, respondWithXml } = require('../helpers/formatters');
+const requireAuth = require('../lib/require-auth');
 
 const responsesByType = {
   'text/csv': respondWithCsv,
@@ -20,6 +21,7 @@ let getUserRoute = (req, res) => {
 
 const usersRouter = express.Router();
 
+usersRouter.use(requireAuth);
 usersRouter.get('/', getUsersRoute);
 usersRouter.get('/:id', getUserRoute);
 

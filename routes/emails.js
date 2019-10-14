@@ -7,6 +7,7 @@ const NotFound = require('../errors/not-found');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const requireAuth = require('../lib/require-auth');
 
 let upload = multer({
   dest: path.join(__dirname, '../uploads'),
@@ -73,6 +74,8 @@ let deleteEmailRoute = async (req, res) => {
 };
 
 const emailsRouter = express.Router();
+
+emailsRouter.use(requireAuth);
 
 emailsRouter.get('/', getEmailsRoute);
 emailsRouter.post('/', bodyParser.json(), bodyParser.urlencoded({ extended: true }), upload.array('attachments'), createMailRoute);
