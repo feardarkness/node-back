@@ -1,6 +1,11 @@
+require('dotenv').config();
+
 const express = require('express');
+
 const usersRouter = require('./routes/users');
 const emailsRouter = require('./routes/emails');
+const tokensRouter = require('./routes/tokens');
+
 const logger = require('./lib/logger');
 const NotFound = require('./errors/not-found');
 const compress = require('compression')
@@ -8,7 +13,9 @@ const serveStatic = require('serve-static');
 const path = require('path');
 const emails = require('./fixtures/emails');
 const findUser = require('./lib/find-user'); 
+
 const basicAuth = require('./lib/basic-auth');
+const tokenAuth = require('./lib/token-auth');
 
 let app = express();
 
@@ -48,7 +55,11 @@ app.use('/uploads', serveStatic(path.join(__dirname, 'uploads'), {
   setHeaders,
 }));
 
+app.use('/tokens', tokensRouter);
+
 app.use(basicAuth(findUser.byCredentials));
+app.use(tokenAuth(findUser.byToken));
+
 app.use('/users', usersRouter);
 app.use('/emails', emailsRouter);
 
